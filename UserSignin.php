@@ -9,7 +9,7 @@ class UserSignin {
         $this->conn = $connection;
         if (!isset($_SESSION['user_login'])) {
             $_SESSION['error'] = "Please signin to the system";
-            header("location:signin.php");
+            header("location:index.php");
         }
     }
 

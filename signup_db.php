@@ -11,7 +11,7 @@ class SignUpDB {
             $this->handleSignUp();
         } else {
             $_SESSION['error'] = "There is no data";
-            header("location: index.php");
+            header("location: signup.php");
         }
     }
 
@@ -24,7 +24,7 @@ class SignUpDB {
         $urole = 'user';
 
         if (!$this->validateInputs($firstname, $lastname, $email, $password, $cpassword)) {
-            header("location: index.php");
+            header("location: signup.php");
             return;
         }
 
@@ -65,9 +65,9 @@ class SignUpDB {
             $row = $check_email->fetch(PDO::FETCH_ASSOC);
 
             if ($row['email'] == $email) {
-                $_SESSION['warning'] = "This email is already in System <a href='signup.php'>Click here</a> to signin";
+                $_SESSION['warning'] = "This email is already in System <a href='index.php'>Click here</a> to signin";
                 $this->conn = null;
-                header("location: index.php");
+                header("location: signup.php");
             } else {
                 $passwordHash = password_hash($password, PASSWORD_DEFAULT);
                 $stmt = $this->conn->prepare("INSERT INTO users (firstname,lastname,email,password,urole) VALUES (:firstname,:lastname,:email,:pwd,:urole)");
@@ -77,13 +77,13 @@ class SignUpDB {
                 $stmt->bindParam(":pwd", $passwordHash);
                 $stmt->bindParam(":urole", $urole);
                 $stmt->execute();
-                $_SESSION['success'] = "Registration successfully done! <a href='signin.php' class='alert-link'>Click here</a> to signin";
+                $_SESSION['success'] = "Registration successfully done! <a href='index.php' class='alert-link'>Click here</a> to signin";
                 $this->conn = null;
-                header("location: index.php");
+                header("location: signup.php");
             }
         } catch (PDOException $e) {
             $_SESSION['error'] = "There is some error: " . $e->getMessage();
-            header("location: index.php");
+            header("location: signup.php");
         }
     }
 }

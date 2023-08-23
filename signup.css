@@ -7,6 +7,10 @@
 }
 
 body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     background-color: #1877f2;
     font-family: Arial, sans-serif;
     color: white;
@@ -17,10 +21,6 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 20px;
-    /* กำหนดระยะห่างจากขอบภายนอก */
-    padding: 20px;
-    /* กำหนดระยะห่างจากขอบภายใน */
 }
 
 .woja-section {
@@ -48,10 +48,6 @@ body {
     padding: 20px;
     border-radius: 8px;
     color: black;
-    margin: 30px;
-    /* กำหนดระยะห่างจากขอบภายนอก */
-    padding: 40px;
-    /* กำหนดระยะห่างจากขอบภายใน */
 }
 
 h3 {

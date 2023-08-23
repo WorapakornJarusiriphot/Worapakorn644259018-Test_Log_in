@@ -33,12 +33,12 @@ class User {
                     } else {
                         $_SESSION['error'] = "Password is not correct";
                         $this->conn = null;
-                        header("location: signin.php");
+                        header("location: index.php");
                     }
                 } else {
                     $_SESSION['error'] = "Username is not correct";
                     $this->conn = null;
-                    header("location: signin.php");
+                    header("location: index.php");
                 }
             } else {
                 $_SESSION['warning'] = "This user is not found. <a href='index.php'>Click here</a> to register";
@@ -47,7 +47,7 @@ class User {
             }
         } catch (PDOException $e) {
             $_SESSION['error'] = "There is some error: " . $e->getMessage();
-            header("location: signin.php");
+            header("location: index.php");
         }
     }
 
